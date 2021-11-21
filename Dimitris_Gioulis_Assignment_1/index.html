@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My School</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./Bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./CSS/styles.css">
+  <link rel="icon" href="./images/669948_html_code_coding_programming_web_icon.png" type="image/png">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-3">
+        <div class="sidebar">
+          <h2 onclick="goHome()"><i class="fa fa-graduation-cap" aria-hidden="true"></i>My School</h2>
+          <hr>
+          <ul class="nav flex-column ">
+            <li>
+              <button type="button" onclick="toggleDiv('courses');" class="btn btn-light btn-lg text-left"><i
+                  class="fa fa-chevron-right" aria-hidden="true"></i>Courses</button>
+              <div id="courses" class="submenu collapse">
+                <ul>
+                  <li>
+                    <button type="button" class="btn btn-light text-left" onclick="navigate('addCourse');">Add</button>
+                  </li>
+                  <li>
+                    <button type="button" class="btn btn-light text-left"
+                      onclick="navigate('editCourse');">Edit</button>
+                  </li>
+                  <li>
+                    <button type="button" class="btn btn-light text-left" onclick="navigate('addCourseTrainers');">Add
+                      Course Trainers</button>
+                  </li>
+                  <li>
+                    <button type="button" class="btn btn-light text-left" onclick="navigate('editCourseTrainers');">Edit
+                      Course Trainers</button>
+                  </li>
+                  <li>
+                    <button type="button" class="btn btn-light text-left" onclick="navigate('addCourseStudents');">Add
+                      Course Students</button>
+                  </li>
+                  <li>
+                    <button type="button" class="btn btn-light text-left" onclick="navigate('editCourseStudents');">Edit
+                      Course Students</button>
+                  </li>
+                  <li>
+                    <button type="button" class="btn btn-light text-left"
+                      onclick="navigate('addCourseAssignments');">Add
+                      Course Assignments</button>
+                  </li>
+                  <li>
+                    <button type="button" class="btn btn-light text-left"
+                      onclick="navigate('editCourseAssignments');">Edit
+                      Course Assignments</button>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <button type="button" onclick="toggleDiv('trainers');" class="btn btn-light btn-lg text-left"><i
+                  class="fa fa-chevron-right" aria-hidden="true"></i>Trainers</button>
+              <div id="trainers" class="submenu collapse">
+                <ul>
+                  <li><button type="button" class="btn btn-light text-left"
+                      onclick="navigate('addTrainer');">Add</button></li>
+                  <li><button type="button" class="btn btn-light text-left"
+                      onclick="navigate('editTrainer');">Edit</button></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <button type="button" onclick="toggleDiv('students');" class="btn btn-light btn-lg text-left"><i
+                  class="fa fa-chevron-right" aria-hidden="true"></i>Students</button>
+              <div id="students" class="submenu collapse">
+                <ul>
+                  <li><button type="button" class="btn btn-light text-left"
+                      onclick="navigate('addStudent');">Add</button></li>
+                  <li><button type="button" class="btn btn-light text-left"
+                      onclick="navigate('editStudent');">Edit</button></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <button type="button" onclick="toggleDiv('assigments');" class="btn btn-light btn-lg text-left"><i
+                  class="fa fa-chevron-right" aria-hidden="true"></i>Assignments</button>
+              <div id="assigments" class="submenu collapse">
+                <ul>
+                  <li><button type="button" class="btn btn-light text-left"
+                      onclick="navigate('addAssignment');">Add</button></li>
+                  <li><button type="button" class="btn btn-light text-left"
+                      onclick="navigate('editAssignment');">Edit</button></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <button type="button" onclick="toggleDiv('assignmentsPerCoursePerStudent');"
+                class="btn btn-light btn-lg text-left"><i class="fa fa-chevron-right" aria-hidden="true"></i>Assignments
+                Per Students Per Course</button>
+              <div id="assignmentsPerCoursePerStudent" class="submenu collapse">
+                <ul>
+                  <li><button type="button" class="btn btn-light text-left"
+                      onclick="navigate('addAssignmentPerStudentsPerCourse');">Add</button></li>
+                  <li><button type="button" class="btn btn-light text-left"
+                      onclick="navigate('editAssignmentPerStudentsPerCourse');">Edit</button></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="formPage" class="col-8 formPage">
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./Bootstrap/js/jquery-3.6.0.min.js"></script>
+<script src="./Bootstrap/js/bootstrap.min.js"></script>
+<script src="./JS/script.js"></script>
+
+</html>

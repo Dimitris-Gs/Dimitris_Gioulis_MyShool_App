@@ -1,0 +1,29 @@
+<h3>Edit Trainers</h3>
+<hr>
+<form>
+  <div class="mb-3">
+    <label for="editTrainer">Choose Trainer</label>
+    <select id="editTrainer" class="form-control" onchange="updateTrainers()">
+      <option selected>Choose Trainer</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="editfirstName" class="form-label">Edit Trainer First Name</label>
+    <input type="text" placeholder="Edit Trainer First Name" class="form-control" id="editfirstName">
+  </div>
+  <div class="mb-3">
+    <label for="editlastName" class="form-label">Edit Trainer Last Name</label>
+    <input type="text" placeholder="Edit Trainer Last Name" class="form-control" id="editLastName">
+  </div>
+  <div class="mb-3">
+    <label for="editSubject">Edit Subject</label>
+    <select id="editSubject" class="form-control">
+      <option selected>Subject</option>
+      <option>JavaScript</option>
+      <option>Java</option>
+      <option>Python</option>
+      <option>C#</option>
+    </select>
+  </div>
+  <button type="button" class="btn btn-dark" onclick="read">Submit</button>
+</form>

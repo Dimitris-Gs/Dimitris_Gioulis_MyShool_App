@@ -1,0 +1,92 @@
+.container-fluid {
+  padding-left: 0px;
+}
+body{
+  background-image: url(../images/mooning.png);
+}
+.sidebar{
+  position: relative;
+  width: 20vw;
+  height: 100%;
+  background-color: #11101D;
+  padding: 14px 30px;
+  z-index: 99;
+  min-height: 100vh;
+  transition: all 0.5s ease;
+  overflow-y: hidden;
+  
+}
+
+form {
+  background-image: url(../images/ticks.png);
+  padding: 20px;
+  border-radius: 5px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 30px;
+}
+
+.formPage {
+  padding-top: 20px;
+  width: 800px;
+}
+
+.btn-dark {
+  background-color: #11101D !important;
+}
+
+.sidebar .fa-chevron-right {
+  font-size: medium;
+}
+
+h2 {
+  color: #fff;
+  cursor: pointer;
+}
+
+h3 {
+  color: #11101D;
+}
+
+h2 i {
+  padding-right: 10px;
+}
+
+.sidebar hr {
+  width: 100%;
+  border-top: 1px solid #fff;
+}
+
+li {
+  padding-top: 20px !important;
+  
+}
+
+li .btn {
+  width: 100% !important;
+}
+
+
+.nav li i {
+  padding-right: 5px ;
+}
+
+.submenu {
+  width: 70% ;
+}
+
+.submenu li {
+  padding-top: 10px !important;
+}
+
+.forms {
+  margin-top: 40px;
+}
+
+.table-dark {
+  width: 100% !important;
+}
+
+.fa-window-close {
+  cursor: pointer;
+}
