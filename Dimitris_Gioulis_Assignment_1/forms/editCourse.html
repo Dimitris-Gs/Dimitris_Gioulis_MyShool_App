@@ -1,32 +1,42 @@
 <h3>Edit Course</h3>
 <hr>
-<form>
+<form class="forms" onsubmit="handleEdit('course')">
   <div class="mb-3">
     <label for="inputCourse">Choose Course</label>
-    <select id="inputCourse" class="form-control" onchange="updateCourses()">
-      <option selected>Choose Course</option>
+    <select id="inputCourse" class="form-control" onchange="updateCourses()" required>
+      <option disabled selected>Choose Course</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="title" class="form-label">Edit Title</label>
-    <input type="text" placeholder="Edit Course Title" class="form-control" id="title">
+    <input type="text" placeholder="Edit Course Title" class="form-control" id="title" required>
+  </div>
+  <div class="mb-3">
+    <label for="inputStream">Edit Stream</label>
+    <select id="inputStream" name="inputStram" class="form-control" required>
+      <option value="" disabled selected>Choose your Stream</option>
+      <option>JavaScript</option>
+      <option>Java</option>
+      <option>Python</option>
+      <option>C#</option>
+    </select>
   </div>
   <div class="mb-3">
     <label for="inputType">Edit Type</label>
-    <select id="inputType" class="form-control">
-      <option selected>Part Time/Full Time</option>
+    <select id="inputType" class="form-control" required>
+      <option disabled selected>Part Time/Full Time</option>
       <option>Part Time</option>
       <option>Full Time</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="startDate" class="form-label">Edit Start Date</label>
-    <input type="date" class="form-control" id="startDate"></input>
+    <input type="date" class="form-control" id="startDate" required></input>
   </div>
   <div class="mb-3">
     <label for="endDate" class="form-label">Edit End Date</label>
-    <input type="date" class="form-control" id="endDate"></input>
+    <input type="date" class="form-control" id="endDate" required></input>
   </div>
-  <button type="button" class="btn btn-dark"
-    onclick="read(document.getElementById('courseName').value, document.getElementById('descriptionCourse').value)">Submit</button>
+  <button type="submit" class="btn btn-dark"
+    onsubmit="read(document.getElementById('courseName').value, document.getElementById('descriptionCourse').value)">Submit</button>
 </form>

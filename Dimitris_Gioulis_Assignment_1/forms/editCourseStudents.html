@@ -1,23 +1,23 @@
 <h3>Edit Course Student</h3>
 <hr>
-<form class='forms'>
+<form class='forms' onsubmit="handleEdit('courseStudents')">
   <div class="mb-3">
     <label for="editCourseStudent">Course Student</label>
-    <select id="editCourseStudent" name="editCourseStudent" class="form-control">
-      <option selected>Course Student</option>
+    <select id="editCourseStudent" name="editCourseStudent" class="form-control" required>
+      <option disabled selected>Course Student</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="editCourse">Course</label>
-    <select id="editCourse" name="editCourse" class="form-control">
-      <option selected>Course</option>
+    <select id="editCourse" name="editCourse" class="form-control" required>
+      <option disabled selected>Choose Course</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="editStudent">Students</label>
-    <select id="editStudent" name="editStudent" class="form-control">
-      <option selected>Students</option>
+    <select id="editStudent" name="editStudent" class="form-control" required>
+      <option disabled selected>Choose Student</option>
     </select>
   </div>
-  <button type="button" class="btn btn-dark" onclick="handleAddCourseTrainers()">Edit</button>
+  <button type="submit" class="btn btn-dark">Edit</button>
 </form>

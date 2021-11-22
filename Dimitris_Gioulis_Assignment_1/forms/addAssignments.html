@@ -1,13 +1,13 @@
 <h3>Add Assignment</h3>
 <hr>
-<form>
+<form class="forms" onsubmit="handleAdd('assignment')">
   <div class="mb-3">
     <label for="assignmentTitle" class="form-label">Assignment Title</label>
     <input type="text" placeholder="Enter Assignment Title" class="form-control" id="assignmentTitle" required>
   </div>
   <div class="mb-3">
     <label for="descriptionAssignment" class="form-label">Assignment Description</label>
-    <textarea class="form-control" id="descriptionAssignment" rows="6" required></textarea>
+    <textarea class="form-control" id="descriptionAssignment" rows="6"></textarea>
   </div>
   <div class="mb-3">
     <label for="dueDate" class="form-label">Due Date</label>
@@ -15,11 +15,11 @@
   </div>
   <div class="mb-3">
     <label for="oralMark" class="form-label">Oral Mark</label>
-    <input type="number" placeholder="Enter Oral Mark" class="form-control" id="oralMark" required>
+    <input type="number" placeholder="Enter Oral Mark" class="form-control" id="oralMark" required min="0" max="100">
   </div>
   <div class="mb-3">
     <label for="totalMark" class="form-label">Total Mark</label>
-    <input type="number" placeholder="Enter Total Mark" class="form-control" id="totalMark" required>
+    <input type="number" placeholder="Enter Total Mark" class="form-control" id="totalMark" required min="0" max="100">
   </div>
-  <button type="button" class="btn btn-dark" onclick="handleAdd('assignment')">Add</button>
+  <button type="submit" class="btn btn-dark">Add</button>
 </form>

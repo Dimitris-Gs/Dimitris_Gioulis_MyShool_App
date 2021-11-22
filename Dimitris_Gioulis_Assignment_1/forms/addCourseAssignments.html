@@ -1,17 +1,17 @@
 <h3>Add Course Assignment</h3>
 <hr>
-<form class='forms'>
+<form class='forms' onsubmit="handleAdd('courseAssignment')">
   <div class="mb-3">
     <label for="selectCourseAssignment">Course</label>
-    <select id="selectCourseAssignment" name="selectCourseAssignment" class="form-control">
-      <option selected>Course</option>
+    <select id="selectCourseAssignment" name="selectCourseAssignment" class="form-control" required>
+      <option value="" disabled selected> Select Course</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="selectAssignment">Assignment</label>
-    <select id="selectAssignment" name="selectAssignment" class="form-control">
-      <option selected>Assignment</option>
+    <select id="selectAssignment" name="selectAssignment" class="form-control" required>
+      <option disabled selected>Select Assignment</option>
     </select>
   </div>
-  <button type="button" class="btn btn-dark" onclick="handleAdd('courseAssignment')">Add</button>
+  <button type="submit" class="btn btn-dark">Add</button>
 </form>

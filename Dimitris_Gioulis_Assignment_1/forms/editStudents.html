@@ -1,31 +1,31 @@
 <h3>Edit Student</h3>
 <hr>
-<form>
+<form class="" onsubmit="handleEdit('editStudent')">
   <div class="mb-3">
     <label for="editStudent">Choose Student</label>
-    <select id="editStudent" class="form-control" onchange="updateStudents()">
-      <option selected>Choose Student</option>
+    <select id="editStudent" class="form-control" onchange="updateStudents()" required>
+      <option disabled selected>Choose Student</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="studentFirstName" class="form-label">First Name</label>
-    <input type="text" placeholder="Enter Student First Name" class="form-control" id="studentFirstName">
+    <input type="text" placeholder="Enter Student First Name" class="form-control" id="studentFirstName" required>
   </div>
   <div class="mb-3">
     <label for="studentLastName" class="form-label">Last Name</label>
-    <input type="text" placeholder="Enter Student Last Name" class="form-control" id="studentLastName">
+    <input type="text" placeholder="Enter Student Last Name" class="form-control" id="studentLastName" required>
   </div>
   <div class="mb-3">
     <label for="dateOfBirthStudent" class="form-label">Date Of Birth</label>
-    <input type="date" class="form-control" id="dateOfBirthStudent"></input>
+    <input type="date" class="form-control" id="dateOfBirthStudent" required></input>
   </div>
   <div class="mb-3">
     <label for="tutionfees">Tution Fees</label>
-    <select id="tutionfees" class="form-control">
-      <option selected>Tution Fees</option>
-      <option>Full Time</option>
-      <option>Part Time</optionn>
+    <select id="tutionfees" class="form-control" required>
+      <option disabled selected>Edit Tution Fees Plan</option>
+      <option>For Full Time</option>
+      <option>For Part Time</optionn>
     </select>
   </div>
-  <button type="button" class="btn btn-dark" onclick="read">Submit</button>
+  <button type="submit" class="btn btn-dark">Submit</button>
 </form>

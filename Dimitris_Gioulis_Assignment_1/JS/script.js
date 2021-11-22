@@ -122,6 +122,47 @@ function handleAdd(type) {
       document.getElementById("formPage").innerHTML = showAssignmentsPerCoursesPerStudents();
       break;
   }
+
+  return false;
+}
+
+function handleEdit(type) {
+  switch (type) {
+    case 'course':
+      // addCourseData();
+      document.getElementById("formPage").innerHTML = showCourses();
+      break;
+    case 'courseTrainer':
+      // addCourseTrainers();
+      document.getElementById("formPage").innerHTML = showCourseTrainers();
+      break;
+    case 'courseStudent':
+      // addCourseStudents();
+      document.getElementById("formPage").innerHTML = showCourseStudents();
+      break;
+    case 'courseAssignment':
+      // addCourseAssignments();
+      document.getElementById("formPage").innerHTML = showCourseAssignments();
+      break;
+    case 'trainer':
+      // addTrainers();
+      document.getElementById("formPage").innerHTML = showTrainers(); 
+      break;
+    case 'student':
+      // addstudents();
+      document.getElementById("formPage").innerHTML = showStudents(); 
+      break;
+    case 'assignment':
+      // addAssignments()
+      document.getElementById("formPage").innerHTML = showAssignments(); 
+      break;
+    case 'assignmentPerStudentPerCourse':
+      // addAssignmentsPerCoursesPerStudents()
+      document.getElementById("formPage").innerHTML = showAssignmentsPerCoursesPerStudents();
+      break;
+  }
+
+  return false;
 }
 
 // h2 my school returns to index.html
@@ -564,7 +605,6 @@ function courseStudentDrop(id) {
   }
 }
 
-
 // add edit course assignments
 // create option for course assignments dropdown
 
@@ -587,3 +627,50 @@ function assignmentsPerCoursesPerStudentsDrop(id) {
   }
 }
  
+// Validation functions
+
+// function validate(type) {
+//   switch (type) {
+//     case letters = /^[A-Za-z]+$/ : 
+//     if (inputtxt.value.match(letters)) {
+//       return true;
+//     } else {
+//       alert ("Only Letters")
+//       return false;
+//     }
+//   }
+  
+// }
+function onlyLetters(text) { 
+      var letters = /^[A-Za-z]+$/;
+      if(text.value.match(letters)) {
+          return true; 
+      } else {
+        alert('Please input alphabet characters only');
+          return false;
+      }
+}
+
+// dates validation 
+
+function dateCompare(startDay, endDay){
+    return new Date(endDay) > new Date(startDay);
+}
+
+// valid if student is over 18 
+
+function createDate(days, months, years) {
+        var date = new Date(); 
+        date.setDate(date.getDate() + days);
+        date.setMonth(date.getMonth() + months);
+        date.setFullYear(date.getFullYear() + years);
+        return date;    
+    }
+
+var newdate = createDate(0,0,-18)
+
+function studentDate(birthDate, today) {
+  return new Date(birthDate) > new Date(today)
+}
+
+

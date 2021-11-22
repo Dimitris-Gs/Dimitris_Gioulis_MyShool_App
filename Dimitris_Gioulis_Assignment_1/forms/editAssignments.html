@@ -1,15 +1,15 @@
 <h3>Edit Assignment</h3>
 <hr>
-<form>
+<form class="forms" onsubmit="handleEdit('assignment')">
   <div class="mb-3">
     <label for="editAssignment">Choose Assignment</label>
-    <select id="editAssignment" class="form-control" onchange="updateAssignments()">
-      <option selected>Choose Assignment</option>
+    <select id="editAssignment" class="form-control" onchange="updateAssignments()" required>
+      <option disabled selected>Choose Assignment</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="assignmentTitle" class="form-label">Assignment Title</label>
-    <input type="text" placeholder="Enter Assignment Title" class="form-control" id="assignmentTitle">
+    <input type="text" placeholder="Enter Assignment Title" class="form-control" id="assignmentTitle" required>
   </div>
   <div class="mb-3">
     <label for="descriptionAssignment" class="form-label">Assignment Description</label>
@@ -17,15 +17,15 @@
   </div>
   <div class="mb-3">
     <label for="dueDate" class="form-label">Due Date</label>
-    <input type="date" class="form-control" id="dueDate"></input>
+    <input type="date" class="form-control" id="dueDate" required></input>
   </div>
   <div class="mb-3">
     <label for="oralMark" class="form-label">Oral Mark</label>
-    <input type="number" placeholder="Enter Oral Mark" class="form-control" id="oralMark">
+    <input type="number" placeholder="Enter Oral Mark" class="form-control" id="oralMark" required min="0" max="100">
   </div>
   <div class="mb-3">
     <label for="totalMark" class="form-label">Total Mark</label>
-    <input type="number" placeholder="Enter Total Mark" class="form-control" id="totalMark">
+    <input type="number" placeholder="Enter Total Mark" class="form-control" id="totalMark" required min="0" max="100">
   </div>
-  <button type="button" class="btn btn-dark">Sumbit</button>
+  <button type="submit" class="btn btn-dark">Sumbit</button>
 </form>

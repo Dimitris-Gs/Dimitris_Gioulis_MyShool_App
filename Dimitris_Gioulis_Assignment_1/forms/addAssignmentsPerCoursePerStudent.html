@@ -1,22 +1,24 @@
 <h3>Add Assignment per Student per Course</h3>
 <hr>
-<div class="mb-3">
-  <label for="">Assignments</label>
-  <select class="form-control" id="dropOfAssignment">
-    <option></option>
-  </select>
-</div>
-<div class="mb-3">
-  <label for="">Students</label>
-  <select class="form-control" id="dropOfStudent">
-    <option></option>
-  </select>
-</div>
-<div class="mb-3">
-  <label for="">Courses</label>
-  <select class="form-control" id="dropOfCourses">
-    <option></option>
-  </select>
-  <br>
-  <button type="button" class="btn btn-dark" onclick="handleAdd('assignmentPerStudentPerCourse')">Add</button>
-</div>
+<form class="forms" onsubmit="handleAdd('assignmentPerStudentPerCourse')">
+  <div class="mb-3">
+    <label for="">Assignments</label>
+    <select class="form-control" id="dropOfAssignment" required>
+      <option value="" disabled selected> Choose Assignment</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="">Students</label>
+    <select class="form-control" id="dropOfStudent" required>
+      <option value="" disabled selected>Choose Student</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="">Courses</label>
+    <select class="form-control" id="dropOfCourses" required>
+      <option value="" disabled selected>Choose Course</option>
+    </select>
+    <br>
+    <button type="submit" class="btn btn-dark">Add</button>
+  </div>
+</form>

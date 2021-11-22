@@ -1,14 +1,14 @@
 <h3>Add Course</h3>
 <hr>
-<form class='forms'>
+<form class='forms' onsubmit="handleAdd('course')">
   <div class="mb-3">
     <label for="title" class="form-label">Title</label>
-    <input type="text" placeholder="Enter Course Title" class="form-control" id="title" name="title">
+    <input type="text" placeholder="Enter Course Title" class="form-control" id="title" name="title" required>
   </div>
   <div class="mb-3">
     <label for="inputStream">Stream</label>
-    <select id="inputStream" name="inputStram" class="form-control">
-      <option selected>Stream Course</option>
+    <select id="inputStream" name="inputStram" class="form-control" required>
+      <option value="" disabled selected>Choose your Stream</option>
       <option>JavaScript</option>
       <option>Java</option>
       <option>Python</option>
@@ -17,19 +17,19 @@
   </div>
   <div class="mb-3">
     <label for="inputType">Type</label>
-    <select id="inputType" name="inputType" class="form-control">
-      <option selected>Part Time/Full Time</option>
+    <select id="inputType" name="inputType" class="form-control" required>
+      <option value="" disabled selected>Choose your Type</option>
       <option>Part Time</option>
       <option>Full Time</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="startDate" class="form-label">Start Date</label>
-    <input type="date" class="form-control" id="startDate" name="startDate"></input>
+    <input type="date" class="form-control" id="startDate" name="startDate" required></input>
   </div>
   <div class="mb-3">
     <label for="endDate" class="form-label">End Date</label>
-    <input type="date" class="form-control" id="endDate" name="endDate"></input>
+    <input type="date" class="form-control" id="endDate" name="endDate" required></input>
   </div>
-  <button type="button" class="btn btn-dark" onclick="handleAdd('course')">Add</button>
+  <button type="submit" class="btn btn-dark">Add</button>
 </form>

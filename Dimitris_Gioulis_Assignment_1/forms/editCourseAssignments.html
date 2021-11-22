@@ -1,23 +1,23 @@
 <h3>Edit Course Assignments</h3>
 <hr>
-<form class='forms'>
+<form class='forms' onsubmit="handleEdit('courseAssignment')">
   <div class="mb-3">
     <label for="editCourseAssignment">Course Assignment</label>
-    <select id="editCourseAssignment" name="editCourseAssignment" class="form-control">
-      <option selected>Course Assignment</option>
+    <select id="editCourseAssignment" name="editCourseAssignment" class="form-control" required>
+      <option disabled selected>Course Assignment</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="editCourse">Course</label>
-    <select id="editCourse" name="editCourse" class="form-control">
-      <option selected>Course</option>
+    <select id="editCourse" name="editCourse" class="form-control" required>
+      <option disabled selected>Choose Course</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="editAssignment">Assignment</label>
-    <select id="editAssignment" name="editAssignment" class="form-control">
-      <option selected>Assignment</option>
+    <select id="editAssignment" name="editAssignment" class="form-control" required>
+      <option disabled selected>Choose Assignment</option>
     </select>
   </div>
-  <button type="button" class="btn btn-dark" onclick="handleEdit('trainer')">Edit</button>
+  <button type="submit" class="btn btn-dark">Edit</button>
 </form>

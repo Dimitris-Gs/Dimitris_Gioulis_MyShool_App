@@ -1,28 +1,30 @@
 <h3>Edit Assignment per Student per Course</h3>
 <hr>
-<div class="mb-3">
-  <label for="">Assignments Per Students Per Course</label>
-  <select class="form-control" id="chooseAssignmentPerStudentPerCourse">
-    <option>Select Assignment per Student per Course</option>
-  </select>
+<form class="forms" onsubmit="handleEdit('assignmentsPerCoursePerStudent')">
+  <div class="mb-3">
+    <label for="">Assignments Per Students Per Course</label>
+    <select class="form-control" id="chooseAssignmentPerStudentPerCourse" required>
+      <option disabled selected>Select Assignment per Student per Course</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="">Assignments</label>
+    <select class="form-control" id="editDropAssignment" required>
+      <option disabled selected>Select Assignment</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="">Students</label>
+    <select class="form-control" id="editDropStudents" required>
+      <option disabled selected>Select Student</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="">Courses</label>
+    <select class="form-control" id="editDropCourses" required>
+      <option disabled s4>Select Course</option>
+    </select>
+    <br>
+    <button type="submit" class="btn btn-dark"">Edit</button>
 </div>
-<div class="mb-3">
-  <label for="">Assignments</label>
-  <select class="form-control" id="editDropAssignment">
-    <option>Select Assignment</option>
-  </select>
-</div>
-<div class="mb-3">
-  <label for="">Students</label>
-  <select class="form-control" id="editDropStudents">
-    <option>Select Student</option>
-  </select>
-</div>
-<div class="mb-3">
-  <label for="">Courses</label>
-  <select class="form-control" id="editDropCourses">
-    <option>Select Course</option>
-  </select>
-  <br>
-  <button type="button" class="btn btn-dark" onclick="handleEdit('course')">Edit</button>
-</div>
+</form>

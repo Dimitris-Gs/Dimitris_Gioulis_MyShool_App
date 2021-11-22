@@ -1,17 +1,17 @@
 <h3>Add Course Trainers</h3>
 <hr>
-<form class='forms'>
+<form class='forms' onsubmit="handleAdd('courseTrainer')">
   <div class="mb-3">
     <label for="selectCourseTrainers">Course</label>
-    <select id="selectCourseTrainers" name="selectCourseTrainers" class="form-control">
-      <option selected>Course</option>
+    <select id="selectCourseTrainers" name="selectCourseTrainers" class="form-control" required>
+      <option disabled selected>Select Course</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="selectTrainer">Trainers</label>
-    <select id="selectTrainer" name="selectTrainer" class="form-control">
-      <option selected>Trainers</option>
+    <select id="selectTrainer" name="selectTrainer" class="form-control" required>
+      <option disabled selected>Select Trainer</option>
     </select>
   </div>
-  <button type="button" class="btn btn-dark" onclick="handleAdd('trainer')">Add</button>
+  <button type="submit" class="btn btn-dark">Add</button>
 </form>
