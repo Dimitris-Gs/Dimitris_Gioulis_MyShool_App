@@ -1,6 +1,6 @@
 <h3>Edit Trainers</h3>
 <hr>
-<form class="" onsubmit="handleEdit('editTrainer')">
+<form class="" onsubmit="handleSubmit('trainer', true)">
   <div class="mb-3">
     <label for="editTrainer">Choose Trainer</label>
     <select id="editTrainer" class="form-control" onchange="updateTrainers()" required>
@@ -8,16 +8,16 @@
     </select>
   </div>
   <div class="mb-3">
-    <label for="editfirstName" class="form-label">Edit Trainer First Name</label>
-    <input type="text" placeholder="Edit Trainer First Name" class="form-control" id="editfirstName" required>
+    <label for="firstName" class="form-label">Edit Trainer First Name</label>
+    <input type="text" placeholder="Edit Trainer First Name" class="form-control" id="firstName" required>
   </div>
   <div class="mb-3">
-    <label for="editlastName" class="form-label">Edit Trainer Last Name</label>
-    <input type="text" placeholder="Edit Trainer Last Name" class="form-control" id="editLastName" required>
+    <label for="lastName" class="form-label">Edit Trainer Last Name</label>
+    <input type="text" placeholder="Edit Trainer Last Name" class="form-control" id="lastName" required>
   </div>
   <div class="mb-3">
-    <label for="editSubject">Edit Subject</label>
-    <select id="editSubject" class="form-control" required>
+    <label for="inputSubject">Edit Subject</label>
+    <select id="inputSubject" class="form-control" required>
       <option disabled selected>Subject</option>
       <option>JavaScript</option>
       <option>Java</option>

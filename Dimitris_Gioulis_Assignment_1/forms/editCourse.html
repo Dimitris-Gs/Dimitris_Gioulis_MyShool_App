@@ -1,6 +1,6 @@
 <h3>Edit Course</h3>
 <hr>
-<form class="forms" onsubmit="handleEdit('course')">
+<form class="forms" onsubmit="handleSubmit('course', true)">
   <div class="mb-3">
     <label for="inputCourse">Choose Course</label>
     <select id="inputCourse" class="form-control" onchange="updateCourses()" required>
@@ -37,6 +37,5 @@
     <label for="endDate" class="form-label">Edit End Date</label>
     <input type="date" class="form-control" id="endDate" required></input>
   </div>
-  <button type="submit" class="btn btn-dark"
-    onsubmit="read(document.getElementById('courseName').value, document.getElementById('descriptionCourse').value)">Submit</button>
+  <button type="submit" class="btn btn-dark">Submit</button>
 </form>

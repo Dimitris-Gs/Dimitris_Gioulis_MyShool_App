@@ -1,6 +1,6 @@
 <h3>Edit Assignment per Student per Course</h3>
 <hr>
-<form class="forms" onsubmit="handleEdit('assignmentsPerCoursePerStudent')">
+<form class="forms" onsubmit="handleSubmit('assignmentPerStudentPerCourse' , true)">
   <div class="mb-3">
     <label for="">Assignments Per Students Per Course</label>
     <select class="form-control" id="chooseAssignmentPerStudentPerCourse" required>
@@ -9,20 +9,20 @@
   </div>
   <div class="mb-3">
     <label for="">Assignments</label>
-    <select class="form-control" id="editDropAssignment" required>
+    <select class="form-control" id="dropOfAssignment" required>
       <option disabled selected>Select Assignment</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="">Students</label>
-    <select class="form-control" id="editDropStudents" required>
+    <select class="form-control" id="dropOfStudent" required>
       <option disabled selected>Select Student</option>
     </select>
   </div>
   <div class="mb-3">
     <label for="">Courses</label>
-    <select class="form-control" id="editDropCourses" required>
-      <option disabled s4>Select Course</option>
+    <select class="form-control" id="dropOfCourses" required>
+      <option disabled selected>Select Course</option>
     </select>
     <br>
     <button type="submit" class="btn btn-dark"">Edit</button>

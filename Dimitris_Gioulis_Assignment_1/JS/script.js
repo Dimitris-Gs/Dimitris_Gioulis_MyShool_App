@@ -21,8 +21,8 @@ function navigate(page) {
     case 'editCourseTrainers':
       $(".formPage").load('./forms/editCourseTrainers.html', () => {
         courseTrainersDrop("editCourseTrainer");
-        coursesDrop("editCourse");
-        trainersDrop("editTrainer");
+        coursesDrop("selectCourseTrainers");
+        trainersDrop("selectTrainer");
       });
       break;
     case 'addCourseStudents':
@@ -34,8 +34,8 @@ function navigate(page) {
     case 'editCourseStudents':
       $(".formPage").load('./forms/editCourseStudents.html', () => {
         courseStudentDrop("editCourseStudent");
-        coursesDrop("editCourse");
-        studentsDrop("editStudent");
+        coursesDrop("selectCourseStudent");
+        studentsDrop("selectStudent");
       });
       break;
     case 'addCourseAssignments':
@@ -47,8 +47,8 @@ function navigate(page) {
     case 'editCourseAssignments':
       $(".formPage").load('./forms/editCourseAssignments.html', () => {
         courseAssignmentDrop("editCourseAssignment");
-        coursesDrop("editCourse");
-        assignmentDrop("editAssignment");
+        coursesDrop("selectCourseAssignment");
+        assignmentDrop("selectAssignment");
       });
       break;
     case 'addTrainer':
@@ -56,20 +56,20 @@ function navigate(page) {
       break;
     case 'editTrainer' :
        $(".formPage").load('./forms/editTrainers.html', () => trainersDrop("editTrainer"));
-       break;
+      break;
     case 'addStudent':
         $(".formPage").load('./forms/addStudents.html');
-        break;
+      break;
     case 'editStudent' :
          $(".formPage").load('./forms/editStudents.html', () => studentsDrop("editStudent"));
-         break;
+      break;
     case 'addAssignment':
       $(".formPage").load('./forms/addAssignments.html');
       break;
     case 'editAssignment':
       $(".formPage").load('./forms/editAssignments.html', () => assignmentDrop("editAssignment"));
       break;
-     case 'addAssignmentPerStudentsPerCourse':
+    case 'addAssignmentPerStudentsPerCourse':
       $(".formPage").load('./forms/addAssignmentsPerCoursePerStudent.html', () => {
         assignmentDrop("dropOfAssignment")
         studentsDrop("dropOfStudent")
@@ -79,85 +79,46 @@ function navigate(page) {
     case 'editAssignmentPerStudentsPerCourse':
       $(".formPage").load('./forms/editAssignmentsPerCoursePerStudent.html', () => {
       assignmentsPerCoursesPerStudentsDrop("chooseAssignmentPerStudentPerCourse");
-      assignmentDrop("editDropAssignment")
-      studentsDrop("editDropStudents")
-      coursesDrop("editDropCourses")
+      assignmentDrop("dropOfAssignment")
+      studentsDrop("dropOfStudent")
+      coursesDrop("dropOfCourses")
     });
       break;
   }
 }
 
-function handleAdd(type) {
+function handleSubmit(type, isEdit) {
   switch (type) {
     case 'course':
-      addCourseData();
+      updateCourseData(isEdit);
       document.getElementById("formPage").innerHTML = showCourses();
       break;
     case 'courseTrainer':
-      addCourseTrainers();
+      updateCourseTrainers(isEdit);
       document.getElementById("formPage").innerHTML = showCourseTrainers();
       break;
     case 'courseStudent':
-      addCourseStudents();
+      updateCourseStudents(isEdit);
       document.getElementById("formPage").innerHTML = showCourseStudents();
       break;
     case 'courseAssignment':
-      addCourseAssignments();
+      updateCourseAssignments(isEdit);
       document.getElementById("formPage").innerHTML = showCourseAssignments();
       break;
     case 'trainer':
-      addTrainers();
+      updateTrainersData(isEdit);
       document.getElementById("formPage").innerHTML = showTrainers(); 
       break;
     case 'student':
-      addstudents();
+      updateStudentsData(isEdit);
       document.getElementById("formPage").innerHTML = showStudents(); 
       break;
     case 'assignment':
-      addAssignments()
+      updateAssignmentsData(isEdit)
       document.getElementById("formPage").innerHTML = showAssignments(); 
       break;
     case 'assignmentPerStudentPerCourse':
-      addAssignmentsPerCoursesPerStudents()
-      document.getElementById("formPage").innerHTML = showAssignmentsPerCoursesPerStudents();
-      break;
-  }
-
-  return false;
-}
-
-function handleEdit(type) {
-  switch (type) {
-    case 'course':
-      // addCourseData();
-      document.getElementById("formPage").innerHTML = showCourses();
-      break;
-    case 'courseTrainer':
-      // addCourseTrainers();
-      document.getElementById("formPage").innerHTML = showCourseTrainers();
-      break;
-    case 'courseStudent':
-      // addCourseStudents();
-      document.getElementById("formPage").innerHTML = showCourseStudents();
-      break;
-    case 'courseAssignment':
-      // addCourseAssignments();
-      document.getElementById("formPage").innerHTML = showCourseAssignments();
-      break;
-    case 'trainer':
-      // addTrainers();
-      document.getElementById("formPage").innerHTML = showTrainers(); 
-      break;
-    case 'student':
-      // addstudents();
-      document.getElementById("formPage").innerHTML = showStudents(); 
-      break;
-    case 'assignment':
-      // addAssignments()
-      document.getElementById("formPage").innerHTML = showAssignments(); 
-      break;
-    case 'assignmentPerStudentPerCourse':
-      // addAssignmentsPerCoursesPerStudents()
+      updateAssignmentsPerCoursesPerStudentsData(isEdit)
       document.getElementById("formPage").innerHTML = showAssignmentsPerCoursesPerStudents();
       break;
   }
@@ -173,16 +134,21 @@ window.location.href="./index.html"
 
 // Courses 
 
-// Add course data function 
+// Add/Edit course data function 
 var courses = [];
-function addCourseData() {
-  var title = document.getElementById("title");
-  var inputStream = document.getElementById("inputStream");
-  var inputType = document.getElementById("inputType");
-  var startDate = document.getElementById("startDate");
-  var endDate = document.getElementById("endDate");
+function updateCourseData(isEdit) {
+  var title = document.getElementById("title").value;
+  var inputStream = document.getElementById("inputStream").value;
+  var inputType = document.getElementById("inputType").value;
+  var startDate = document.getElementById("startDate").value;
+  var endDate = document.getElementById("endDate").value;
 
-  courses.push({title: title.value, inputStream: inputStream.value, inputType: inputType.value, startDate: startDate.value, endDate: endDate.value});
+  if (isEdit) {
+    var chooseCourse = document.getElementById("inputCourse").value;
+    courses[chooseCourse] = { title, inputStream, inputType, startDate, endDate }
+  } else {
+    courses.push({ title, inputStream, inputType, startDate, endDate });
+  }
 }
 
 //add students
@@ -220,11 +186,17 @@ function showCourses() {
 //add course/trainers data
 
 var courseTrainers = [];
-function addCourseTrainers() {
+function updateCourseTrainers(isEdit) {
   var courseId = document.getElementById("selectCourseTrainers").value;
   var trainerId = document.getElementById("selectTrainer").value;
 
-  courseTrainers.push({courseId, trainerId});
+  if(isEdit) {
+    var chooseCourseTrainer = document.getElementById("editCourseTrainer").value;
+    courseTrainers[chooseCourseTrainer] = {courseId, trainerId}
+  } else {
+    courseTrainers.push({courseId, trainerId});
+  }
+  
 }
 
 // table of data for course/trainers
@@ -232,19 +204,19 @@ function showCourseTrainers() {
   var courseTrainersData = `
     <i onclick="navigate('./forms/addCourseTrainers.html');" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Course</th>
-        <th scope="col">Trainer</th>
-      </tr>
-    </thead>
-    <tbody>`;
+      <thead>
+        <tr>
+          <th scope="col">Course</th>
+          <th scope="col">Trainer</th>
+        </tr>
+      </thead>
+      <tbody>`;
   // data from forms to table
   for(var i = 0; i < courseTrainers.length; i++) {
     courseTrainersData += "<tr>" +
-                            "<td>" + trainers[courseTrainers[i].trainerId].firstName + ' ' + 
-                            trainers[courseTrainers[i].trainerId].lastName + "</td>" +
-                            "<td>" + courses[courseTrainers[i].courseId].title + "</td>" + 
+                            "<td>" + courses[courseTrainers[i].courseId].title + ' ' + 
+                                    trainers[courseTrainers[i].trainerId].firstName + "</td>" +
+                            "<td>" +  trainers[courseTrainers[i].trainerId].lasttName + "</td>" + 
                   "</tr>";
   }
   courseTrainersData += '</tbody></table>';
@@ -256,23 +228,28 @@ function showCourseTrainers() {
 // enroll course Students
 
 var courseStudents = [];
-function addCourseStudents() {
+function updateCourseStudents(isEdit) {
   var courseId = document.getElementById("selectCourseStudent").value;
   var studentId = document.getElementById("selectStudent").value;
-
-  courseStudents.push({courseId, studentId});
+  if (isEdit) {
+    var chooseCourseStudents = document.getElementById("editCourseStudent").value; 
+    courseStudents[chooseCourseStudents] = {courseId, studentId}
+  } else {
+    courseStudents.push({courseId, studentId});
+  }
+  
 }
 
 function showCourseStudents() {
   var courseStudentsData = `
-   <i onclick="navigate('./forms/addCourseStudents.html');" class="fa fa-window-close"></i>
+    <i onclick="navigate('./forms/addCourseStudents.html');" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Course</th>
-        <th scope="col">Students</th>
-      </tr>
-    </thead>
+      <thead>
+        <tr>
+          <th scope="col">Course</th>
+          <th scope="col">Students</th>
+        </tr>
+      </thead>
     <tbody>`;
     // data from forms to table
     for(var i = 0; i < courseStudents.length; i++) {
@@ -290,11 +267,16 @@ function showCourseStudents() {
 //create course Assignments
 
 var courseAssignments = [];
-function addCourseAssignments() {
+function updateCourseAssignments(isEdit) {
   var courseId = document.getElementById("selectCourseAssignment").value;
   var assignmentId = document.getElementById("selectAssignment").value;
 
-  courseAssignments.push({courseId, assignmentId});
+  if (isEdit) {
+    var chooseCourseAssignments = document.getElementById("editCourseAssignment").value;
+    courseAssignments[chooseCourseAssignments] = {courseId, assignmentId }
+  } else {
+    courseAssignments.push({courseId, assignmentId});
+  }
 }
 
 // table of data for course/assignments
@@ -303,12 +285,12 @@ function showCourseAssignments() {
   var courseAssignmentsData = `
     <i onclick="navigate('./forms/addCourseAssignments.html');" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Course</th>
-        <th scope="col">Assignment</th>
-      </tr>
-    </thead>
+      <thead>
+        <tr>
+          <th scope="col">Course</th>
+          <th scope="col">Assignment</th>
+        </tr>
+      </thead>
     <tbody>`;
   // data from forms to table
   for(var i = 0; i < courseAssignments.length; i++) {
@@ -326,27 +308,32 @@ function showCourseAssignments() {
 // add trainers data function
 
 var trainers = [];
-function addTrainers () {
-  var firstName = document.getElementById("firstName");
-  var lastName = document.getElementById("lastName");
-  var inputSubject = document.getElementById("inputSubject");
+function updateTrainersData(isEdit) {
+  var firstName = document.getElementById("firstName").value;
+  var lastName = document.getElementById("lastName").value;
+  var inputSubject = document.getElementById("inputSubject").value;
 
-  trainers.push({firstName: firstName.value, lastName: lastName.value, inputSubject: inputSubject.value });
+  if(isEdit) {
+    var chooseTrainer = document.getElementById("editTrainer").value;
+    trainers[chooseTrainer] = {firstName, lastName, inputSubject}
+  } else{
+    trainers.push({firstName, lastName, inputSubject});
+  }
 }
 
 // table of data for trainers
 
 function showTrainers() {
   var trainersData = `
-   <i onclick="navigate('./forms/addTrainers.html');" class="fa fa-window-close"></i>
+    <i onclick="navigate('./forms/addTrainers.html');" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
-   <thead>
-      <tr>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Subject</th>
-      </tr>
-    </thead>
+      <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Subject</th>
+          </tr>
+        </thead>
     <tbody> `;
 
   // data from forms to table for trainers
@@ -366,27 +353,33 @@ function showTrainers() {
 // add students data function 
 
 var students = [];
-function addstudents () {
-  var studentFirstName = document.getElementById("studentFirstName");
-  var studentLastName = document.getElementById("studentLastName");
-  var dateOfBirthStudent = document.getElementById("dateOfBirthStudent");
-  var tutionfees = document.getElementById("tutionfees");
+function updateStudentsData (isEdit) {
+  var studentFirstName = document.getElementById("studentFirstName").value;
+  var studentLastName = document.getElementById("studentLastName").value;
+  var dateOfBirthStudent = document.getElementById("dateOfBirthStudent").value;
+  var tutionfees = document.getElementById("tutionfees").value;
 
-  students.push({studentFirstName: studentFirstName.value, studentLastName: studentLastName.value, dateOfBirthStudent: dateOfBirthStudent.value, tutionfees: tutionfees.value });
+  if(isEdit) {
+    var chooseStudent = document.getElementById("editStudent").value;
+    students[chooseStudent] = {studentFirstName, studentLastName, dateOfBirthStudent,tutionfees}
+  } else {
+    students.push({studentFirstName, studentLastName, dateOfBirthStudent, tutionfees});
+  }
 }
+  
 
 function showStudents() {
    var studentsData = `
-   <i onclick="navigate('./forms/addTrainers.html');" class="fa fa-window-close"></i>
+    <i onclick="navigate('./forms/addTrainers.html');" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
-    <thead>
-      <tr>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Date Of Birth</th>
-        <th scope="col">Tution Fees</th>
-      </tr>
-    </thead>
+      <thead>
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Date Of Birth</th>
+          <th scope="col">Tution Fees</th>
+        </tr>
+      </thead>
     <tbody> `
   // data from forms to table for students
   for(var i = 0; i < students.length; i++) {
@@ -406,31 +399,36 @@ function showStudents() {
 // add assignment function 
 
 var assignments = [];
-function addAssignments() {
-  var assignmentTitle = document.getElementById("assignmentTitle");
-  var descriptionAssignment = document.getElementById("descriptionAssignment");
-  var dueDate = document.getElementById("dueDate");
-  var oralMark = document.getElementById("oralMark");
-  var totalMark = document.getElementById("totalMark");
-
-  assignments.push({assignmentTitle: assignmentTitle.value, descriptionAssignment: descriptionAssignment.value, dueDate: dueDate.value, oralMark: oralMark.value, totalMark: totalMark.value });
+function updateAssignmentsData(isEdit) {
+  var assignmentTitle = document.getElementById("assignmentTitle").value;
+  var descriptionAssignment = document.getElementById("descriptionAssignment").value;
+  var dueDate = document.getElementById("dueDate").value;
+  var oralMark = document.getElementById("oralMark").value;
+  var totalMark = document.getElementById("totalMark").value;
+  
+  if(isEdit) {
+    var chooseAssignment = document.getElementById("editAssignment").value;
+    assignments[chooseAssignment] = {assignmentTitle, descriptionAssignment, dueDate, oralMark, totalMark}
+  } else {
+     assignments.push({assignmentTitle, descriptionAssignment, dueDate, oralMark, totalMark});
+  }
 }
 
 
 
 function showAssignments() {
   var assignmentsData = `
-   <i onclick="navigate('./forms/addTrainers.html');" class="fa fa-window-close"></i>
+    <i onclick="navigate('./forms/addTrainers.html');" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
-   <thead>
-      <tr>
-        <th scope="col">Assignment Title</th>
-        <th scope="col">Assignment Description</th>
-        <th scope="col">Due Date</th>
-        <th scope="col">Oral Mark</th>
-        <th scope="col">Total Mark</th>
-      </tr>
-    </thead>
+      <thead>
+        <tr>
+          <th scope="col">Assignment Title</th>
+          <th scope="col">Assignment Description</th>
+          <th scope="col">Due Date</th>
+          <th scope="col">Oral Mark</th>
+          <th scope="col">Total Mark</th>
+        </tr>
+      </thead>
     <tbody> `;
   // data from forms to table
   for(var i = 0; i < assignments.length; i++) {
@@ -451,28 +449,31 @@ function showAssignments() {
 // add data assignments per course per student 
 
 var assignmentsPerCoursesPerStudents = []
-function addAssignmentsPerCoursesPerStudents() {
-  var dropOfAssignment = document.getElementById("dropOfAssignment")
-  var dropOfStudent = document.getElementById("dropOfStudent")
-  var dropOfCourses = document.getElementById("dropOfCourses")
+function updateAssignmentsPerCoursesPerStudentsData(isEdit) {
+  var dropOfAssignment = document.getElementById("dropOfAssignment").value;
+  var dropOfStudent = document.getElementById("dropOfStudent").value;
+  var dropOfCourses = document.getElementById("dropOfCourses").value;
 
-  assignmentsPerCoursesPerStudents.push({assignmentId: dropOfAssignment.value, studentId: dropOfStudent.value, courseId: dropOfCourses.value  })
+  if(isEdit) {
+    var chooseAssignmentsPerCoursesPerStudents = document.getElementById("chooseAssignmentPerStudentPerCourse").value;
+    assignmentsPerCoursesPerStudents[chooseAssignmentsPerCoursesPerStudents] = {assignmentId: dropOfAssignment, studentId: dropOfStudent, courseId: dropOfCourses}
+  } else {
+    assignmentsPerCoursesPerStudents.push({assignmentId: dropOfAssignment, studentId: dropOfStudent, courseId: dropOfCourses})
+  }  
 }
-
 
 function showAssignmentsPerCoursesPerStudents() {
   var assignmentsPerCoursesPerStudentsData = `
-   <i onclick="navigate('./forms/addAssignmentsPerCoursePerStudent.html');" class="fa fa-window-close"></i>
+    <i onclick="navigate('./forms/addAssignmentsPerCoursePerStudent.html');" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
-  <thead>
-      <tr>
-        <th scope="col">Assignment Title</th>
-        <th scope="col">Student Name</th>
-        <th scope="col">Course</th>
-      </tr>
-    </thead>
-    <tbody>
-    <thead> `;
+      <thead>
+        <tr>
+          <th scope="col">Assignment Title</th>
+          <th scope="col">Student Name</th>
+          <th scope="col">Course</th>
+        </tr>
+      </thead>
+    <tbody> `;
   // data from forms to table
   for(var i = 0; i < assignmentsPerCoursesPerStudents.length; i++) {
     var student = students[assignmentsPerCoursesPerStudents[i].studentId];
@@ -495,8 +496,8 @@ function showAssignmentsPerCoursesPerStudents() {
 function coursesDrop(id) {
   for(var i = 0; i < courses.length; i++) {
     $('#' + id).append($('<option>', {
-    value: i,
-    text: courses[i].title
+      value: i,
+      text: courses[i].title
     }))
   }
 }
@@ -520,8 +521,8 @@ function updateCourses() {
 function trainersDrop(id) {
   for(var i = 0; i < trainers.length; i++) {
     $('#'+id).append($('<option>', {
-    value: i,
-    text: trainers[i].firstName + ' ' + trainers[i].lastName
+      value: i,
+      text: trainers[i].firstName + ' ' + trainers[i].lastName
   }));
 }
 }
@@ -530,9 +531,9 @@ function trainersDrop(id) {
 function updateTrainers() {
    var selectedTrainer = trainers[$('#editTrainer').val()]
   
-  $('#editfirstName').val(selectedTrainer.firstName);
-  $('#editLastName').val(selectedTrainer.lastName);
-  $('#editSubject').val(selectedTrainer.inputSubject);
+  $('#firstName').val(selectedTrainer.firstName);
+  $('#lastName').val(selectedTrainer.lastName);
+  $('#inputSubject').val(selectedTrainer.inputSubject);
 }
 
 
@@ -621,7 +622,7 @@ function assignmentsPerCoursesPerStudentsDrop(id) {
   for(var i = 0; i < assignmentsPerCoursesPerStudents.length; i++) {
     $('#'+id).append($('<option>',{
       value: i,
-      text: courses[assignmentsPerCoursesPerStudents[i].courseId].title + ' - ' +     assignments[assignmentsPerCoursesPerStudents[i].assignmentId].assignmentTitle + ' - ' + 
+      text: courses[assignmentsPerCoursesPerStudents[i].courseId].title + ' - ' + assignments[assignmentsPerCoursesPerStudents[i].assignmentId].assignmentTitle + ' - ' + 
       students[assignmentsPerCoursesPerStudents[i].studentId].studentFirstName + ' ' + students[assignmentsPerCoursesPerStudents[i].studentId].studentFirstName
     }));
   }
@@ -629,48 +630,37 @@ function assignmentsPerCoursesPerStudentsDrop(id) {
  
 // Validation functions
 
-// function validate(type) {
-//   switch (type) {
-//     case letters = /^[A-Za-z]+$/ : 
-//     if (inputtxt.value.match(letters)) {
-//       return true;
-//     } else {
-//       alert ("Only Letters")
-//       return false;
-//     }
-//   }
-  
-// }
+// virables for validation
+var eighteenYearsAgo = createDate(0,0,-18)
+var today = new Date();
+
+
 function onlyLetters(text) { 
-      var letters = /^[A-Za-z]+$/;
-      if(text.value.match(letters)) {
-          return true; 
-      } else {
-        alert('Please input alphabet characters only');
-          return false;
-      }
+  var letters = /^[A-Za-z]+$/;
+  if(text.match(letters)) {
+      return true; 
+  } else {
+    alert('Please input alphabet characters only');
+      return false;
+  }
 }
 
 // dates validation 
-
-function dateCompare(startDay, endDay){
-    return new Date(endDay) > new Date(startDay);
+function dateCompare(firstDate, secondDate){
+  if (new Date(secondDate) > new Date(firstDate)) {
+    return true;
+  } else {
+    alert('Please make sure dates are correct');
+    return false;
+  }
 }
 
 // valid if student is over 18 
 
 function createDate(days, months, years) {
-        var date = new Date(); 
-        date.setDate(date.getDate() + days);
-        date.setMonth(date.getMonth() + months);
-        date.setFullYear(date.getFullYear() + years);
-        return date;    
-    }
-
-var newdate = createDate(0,0,-18)
-
-function studentDate(birthDate, today) {
-  return new Date(birthDate) > new Date(today)
+  var date = new Date(); 
+  date.setDate(date.getDate() + days);
+  date.setMonth(date.getMonth() + months);
+  date.setFullYear(date.getFullYear() + years);
+  return date;    
 }
-
-

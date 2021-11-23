@@ -1,6 +1,6 @@
 <h3>Edit Course Trainers</h3>
 <hr>
-<form class='forms' onsubmit="handleEdit('courseTrainers')">
+<form class='forms' onsubmit="handleSubmit('courseTrainer', true)">
   <div class="mb-3">
     <label for="editCourseTrainer">Course Trainer</label>
     <select id="editCourseTrainer" name="editCourseTrainer" class="form-control" required>
@@ -8,14 +8,14 @@
     </select>
   </div>
   <div class="mb-3">
-    <label for="editCourse">Course</label>
-    <select id="editCourse" name="editCourse" class="form-control" required>
+    <label for="selectCourseTrainers">Course</label>
+    <select id="selectCourseTrainers" name="selectCourseTrainers" class="form-control" required>
       <option disabled selected>Choose Course</option>
     </select>
   </div>
   <div class="mb-3">
-    <label for="editTrainer">Trainers</label>
-    <select id="editTrainer" name="editTrainer" class="form-control" required>
+    <label for="selectTrainer">Trainers</label>
+    <select id="selectTrainer" name="selectTrainer" class="form-control" required>
       <option disabled selected>Choose Trainer</option>
     </select>
   </div>
