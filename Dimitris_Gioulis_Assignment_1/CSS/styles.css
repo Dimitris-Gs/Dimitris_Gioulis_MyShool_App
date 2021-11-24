@@ -90,3 +90,11 @@ li .btn {
 .fa-window-close {
   cursor: pointer;
 }
+
+.validation-error {
+  color: #9c3131;
+  font-weight: bold;
+  border: 1px solid #11101D;
+  background-color: white;
+  border-radius: 3px;
+}

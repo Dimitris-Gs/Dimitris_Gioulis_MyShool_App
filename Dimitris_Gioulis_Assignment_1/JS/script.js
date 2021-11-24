@@ -87,10 +87,11 @@ function navigate(page) {
   }
 }
 
+// add / edit user inputs in forms 
 function handleSubmit(type, isEdit) {
   switch (type) {
     case 'course':
-      updateCourseData(isEdit);
+      updateCourseData(isEdit)
       document.getElementById("formPage").innerHTML = showCourses();
       break;
     case 'courseTrainer':
@@ -106,12 +107,14 @@ function handleSubmit(type, isEdit) {
       document.getElementById("formPage").innerHTML = showCourseAssignments();
       break;
     case 'trainer':
-      updateTrainersData(isEdit);
-      document.getElementById("formPage").innerHTML = showTrainers(); 
+      if(updateTrainersData(isEdit)) {
+        document.getElementById("formPage").innerHTML = showTrainers(); 
+      }
       break;
     case 'student':
-      updateStudentsData(isEdit);
-      document.getElementById("formPage").innerHTML = showStudents(); 
+      if(updateStudentsData(isEdit)) {
+        document.getElementById("formPage").innerHTML = showStudents(); 
+      }
       break;
     case 'assignment':
       updateAssignmentsData(isEdit)
@@ -143,19 +146,27 @@ function updateCourseData(isEdit) {
   var startDate = document.getElementById("startDate").value;
   var endDate = document.getElementById("endDate").value;
 
+  // if is edit update 
   if (isEdit) {
     var chooseCourse = document.getElementById("inputCourse").value;
     courses[chooseCourse] = { title, inputStream, inputType, startDate, endDate }
+  // if not edit , add
   } else {
     courses.push({ title, inputStream, inputType, startDate, endDate });
   }
+
+  return true;
 }
+
+$('#formPage').on('click', 'i', function (event) {
+  navigate(event.target.id);
+});
 
 //add students
 // table of data for courses 
 function showCourses() {
   var courseData = `
-    <i onclick="navigate('./forms/addCourse.html');" class="fa fa-window-close"></i>
+    <i id="addCourse" onclick="" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
       <thead>
         <tr>
@@ -190,9 +201,11 @@ function updateCourseTrainers(isEdit) {
   var courseId = document.getElementById("selectCourseTrainers").value;
   var trainerId = document.getElementById("selectTrainer").value;
 
+  // if is edit update
   if(isEdit) {
     var chooseCourseTrainer = document.getElementById("editCourseTrainer").value;
     courseTrainers[chooseCourseTrainer] = {courseId, trainerId}
+    // if not edit add 
   } else {
     courseTrainers.push({courseId, trainerId});
   }
@@ -202,7 +215,7 @@ function updateCourseTrainers(isEdit) {
 // table of data for course/trainers
 function showCourseTrainers() {
   var courseTrainersData = `
-    <i onclick="navigate('./forms/addCourseTrainers.html');" class="fa fa-window-close"></i>
+    <i id="addCourseTrainers" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
       <thead>
         <tr>
@@ -231,9 +244,13 @@ var courseStudents = [];
 function updateCourseStudents(isEdit) {
   var courseId = document.getElementById("selectCourseStudent").value;
   var studentId = document.getElementById("selectStudent").value;
+
+  // if is edit update
   if (isEdit) {
     var chooseCourseStudents = document.getElementById("editCourseStudent").value; 
     courseStudents[chooseCourseStudents] = {courseId, studentId}
+
+  // if not edit add
   } else {
     courseStudents.push({courseId, studentId});
   }
@@ -242,7 +259,7 @@ function updateCourseStudents(isEdit) {
 
 function showCourseStudents() {
   var courseStudentsData = `
-    <i onclick="navigate('./forms/addCourseStudents.html');" class="fa fa-window-close"></i>
+    <i id="addCourseStudents" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
       <thead>
         <tr>
@@ -271,9 +288,12 @@ function updateCourseAssignments(isEdit) {
   var courseId = document.getElementById("selectCourseAssignment").value;
   var assignmentId = document.getElementById("selectAssignment").value;
 
+  // if is edit update 
   if (isEdit) {
     var chooseCourseAssignments = document.getElementById("editCourseAssignment").value;
     courseAssignments[chooseCourseAssignments] = {courseId, assignmentId }
+
+  // if not edit add
   } else {
     courseAssignments.push({courseId, assignmentId});
   }
@@ -283,7 +303,7 @@ function updateCourseAssignments(isEdit) {
 
 function showCourseAssignments() {
   var courseAssignmentsData = `
-    <i onclick="navigate('./forms/addCourseAssignments.html');" class="fa fa-window-close"></i>
+    <i id="addCourseAssignments" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
       <thead>
         <tr>
@@ -313,19 +333,34 @@ function updateTrainersData(isEdit) {
   var lastName = document.getElementById("lastName").value;
   var inputSubject = document.getElementById("inputSubject").value;
 
+// validate first name is only letters
+  if (!onlyLetters(firstName)) {
+    addValidationMessage('firstName', 'Only letters accepted.')
+    return false;
+  }
+
+// validate last name is only letters 
+  if (!onlyLetters(lastName)) {
+    addValidationMessage('lastName', 'Only letters accepted.')
+    return false;
+  }
+// if is edit update 
   if(isEdit) {
     var chooseTrainer = document.getElementById("editTrainer").value;
     trainers[chooseTrainer] = {firstName, lastName, inputSubject}
+  // if not edit add 
   } else{
     trainers.push({firstName, lastName, inputSubject});
   }
+
+  return true;
 }
 
 // table of data for trainers
 
 function showTrainers() {
   var trainersData = `
-    <i onclick="navigate('./forms/addTrainers.html');" class="fa fa-window-close"></i>
+    <i id="addTrainer" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
       <thead>
           <tr>
@@ -359,18 +394,30 @@ function updateStudentsData (isEdit) {
   var dateOfBirthStudent = document.getElementById("dateOfBirthStudent").value;
   var tutionfees = document.getElementById("tutionfees").value;
 
+  // validate for students first name is only letters 
+  if (!onlyLetters(studentFirstName)) {
+    addValidationMessage('studentFirstName', 'Only letters accepted.')
+    return false;
+  }
+  // validate for students last name is only letters
+  if (!onlyLetters(studentLastName)) {
+    addValidationMessage('studentLastName', 'Only letters accepted.')
+    return false;
+  }
   if(isEdit) {
     var chooseStudent = document.getElementById("editStudent").value;
     students[chooseStudent] = {studentFirstName, studentLastName, dateOfBirthStudent,tutionfees}
   } else {
     students.push({studentFirstName, studentLastName, dateOfBirthStudent, tutionfees});
   }
+  
+  return true;
 }
   
 
 function showStudents() {
    var studentsData = `
-    <i onclick="navigate('./forms/addTrainers.html');" class="fa fa-window-close"></i>
+    <i id="addStudent" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
       <thead>
         <tr>
@@ -406,9 +453,12 @@ function updateAssignmentsData(isEdit) {
   var oralMark = document.getElementById("oralMark").value;
   var totalMark = document.getElementById("totalMark").value;
   
+  // if is edit update
   if(isEdit) {
     var chooseAssignment = document.getElementById("editAssignment").value;
     assignments[chooseAssignment] = {assignmentTitle, descriptionAssignment, dueDate, oralMark, totalMark}
+
+  // if not edit, add
   } else {
      assignments.push({assignmentTitle, descriptionAssignment, dueDate, oralMark, totalMark});
   }
@@ -418,7 +468,7 @@ function updateAssignmentsData(isEdit) {
 
 function showAssignments() {
   var assignmentsData = `
-    <i onclick="navigate('./forms/addTrainers.html');" class="fa fa-window-close"></i>
+    <i id="addTrainer" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
       <thead>
         <tr>
@@ -454,9 +504,12 @@ function updateAssignmentsPerCoursesPerStudentsData(isEdit) {
   var dropOfStudent = document.getElementById("dropOfStudent").value;
   var dropOfCourses = document.getElementById("dropOfCourses").value;
 
+  // if is edit update
   if(isEdit) {
     var chooseAssignmentsPerCoursesPerStudents = document.getElementById("chooseAssignmentPerStudentPerCourse").value;
     assignmentsPerCoursesPerStudents[chooseAssignmentsPerCoursesPerStudents] = {assignmentId: dropOfAssignment, studentId: dropOfStudent, courseId: dropOfCourses}
+
+  // if not edit , add
   } else {
     assignmentsPerCoursesPerStudents.push({assignmentId: dropOfAssignment, studentId: dropOfStudent, courseId: dropOfCourses})
   }  
@@ -464,7 +517,7 @@ function updateAssignmentsPerCoursesPerStudentsData(isEdit) {
 
 function showAssignmentsPerCoursesPerStudents() {
   var assignmentsPerCoursesPerStudentsData = `
-    <i onclick="navigate('./forms/addAssignmentsPerCoursePerStudent.html');" class="fa fa-window-close"></i>
+    <i id="addAssignmentPerStudentsPerCourse" class="fa fa-window-close"></i>
     <table id="listElements" class="table table-dark table-hover">
       <thead>
         <tr>
@@ -627,40 +680,18 @@ function assignmentsPerCoursesPerStudentsDrop(id) {
     }));
   }
 }
- 
-// Validation functions
-
-// virables for validation
-var eighteenYearsAgo = createDate(0,0,-18)
-var today = new Date();
 
 
+ // validation 
 function onlyLetters(text) { 
   var letters = /^[A-Za-z]+$/;
   if(text.match(letters)) {
       return true; 
   } else {
-    alert('Please input alphabet characters only');
-      return false;
-  }
-}
-
-// dates validation 
-function dateCompare(firstDate, secondDate){
-  if (new Date(secondDate) > new Date(firstDate)) {
-    return true;
-  } else {
-    alert('Please make sure dates are correct');
     return false;
   }
 }
 
-// valid if student is over 18 
-
-function createDate(days, months, years) {
-  var date = new Date(); 
-  date.setDate(date.getDate() + days);
-  date.setMonth(date.getMonth() + months);
-  date.setFullYear(date.getFullYear() + years);
-  return date;    
+function addValidationMessage(id, message) {
+  document.getElementById(id).insertAdjacentHTML('afterend', `<small class="validation-error">${message}</small>`);
 }

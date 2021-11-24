@@ -1,6 +1,6 @@
 <h3>Edit Course</h3>
 <hr>
-<form class="forms" onsubmit="handleSubmit('course', true)">
+<form class="forms" onsubmit="handleSubmit('course', true);return false">
   <div class="mb-3">
     <label for="inputCourse">Choose Course</label>
     <select id="inputCourse" class="form-control" onchange="updateCourses()" required>
